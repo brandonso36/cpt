@@ -1,4 +1,4 @@
-import json, jwt
+import jwt, json
 from flask import Blueprint, request, jsonify, current_app, Response
 from flask_restful import Api, Resource # used for REST API building
 from datetime import datetime
@@ -43,7 +43,7 @@ class UserAPI:
             # convert to date type
             if dob is not None:
                 try:
-                    uo.dob = datetime.strptime(dob, '%Y-%m-%d').date()
+                    uo.dob = datetime.strptime(dob, '%m-%d-%Y').date()
                 except:
                     return {'message': f'Date of birth format error {dob}, must be mm-dd-yyyy'}, 400
             
